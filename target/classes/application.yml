@@ -1,0 +1,36 @@
+#DeepSeek
+langchain4j:
+  open-ai:
+    chat-model:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: ${DASH_SCOPE_API_KEY}
+      #DeepSeek-V3
+      model-name: deepseek-v3
+      #温度系数：取值范围通常在 0 到 1 之间。值越高，模型的输出越随机、富有创造性；
+      # 值越低，输出越确定、保守。这里设置为 0.9，意味着模型会有一定的随机性，生成的回复可能会比较多样化。
+      temperature: 0.9
+  #DeepSeek-R1 推理模型
+  #langchain4j.open-ai.chat-model.model-name=deepseek-reasoner
+  #阿里百炼平台
+  community:
+    dashscope:
+      chat-model:
+        api-key: ${DASH_SCOPE_API_KEY}
+        model-name: qwen-max
+#MongoDB连接配置
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chat_memory_db
+  # 基本数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/english_word_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # 开启 SQL 日志打印
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8080
